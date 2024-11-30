@@ -1,0 +1,7 @@
+<div class="flex flex-col mx-2 my-3">
+    <form *ngIf="!!customizerForm" [formGroup]="customizerForm">
+        <div *ngFor="let component of formComponents">
+            <ng-container *ngComponentOutlet="component"></ng-container>
+        </div>
+    </form>
+</div>
