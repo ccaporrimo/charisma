@@ -1,10 +1,12 @@
 import { NgComponentOutlet, NgFor, NgIf } from '@angular/common';
 import { AfterViewInit, Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormControl, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormFieldBaseComponent } from '../form-fields/form-field-base/form-field-base.component';
 
 export interface CustomizerFormField {
   formControl: FormControl;
-  component: Type<Component>
+  component: Type<FormFieldBaseComponent<any>>;
+  label?: string;
 }
 
 @Component({

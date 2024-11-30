@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CustomizerComponent, CustomizerFormField } from '../ui/customizer/customizer.component';
-import { NationNameComponent } from '../ui/form-fields/nation-name/nation-name.component';
+import { NationNameComponent } from '../ui/form-fields/nation/nation-name/nation-name.component';
 import { FormControl } from '@angular/forms';
+import { NationalFocusFieldComponent } from '../ui/form-fields/nation/national-focus/national-focus-field.component';
 
 @Component({
   selector: 'app-customize-nation',
@@ -16,7 +17,18 @@ export class CustomizeNationComponent {
   public readonly formFields: CustomizerFormField[] = [
     {
       component: NationNameComponent,
-      formControl: new FormControl('nationName')
+      formControl: new FormControl('nationName'),
+      label: 'Nation'
+    },
+    {
+      component: NationalFocusFieldComponent,
+      formControl: new FormControl('nationalFocus1'),
+      label: 'Primary National Focus'
+    },
+    {
+      component: NationalFocusFieldComponent,
+      formControl: new FormControl('nationalFocus2'),
+      label: 'Secondary National Focus'
     }
   ]
 

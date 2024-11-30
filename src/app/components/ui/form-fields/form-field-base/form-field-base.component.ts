@@ -1,11 +1,12 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-form-field-base',
   standalone: true,
   templateUrl: './form-field-base.component.html',
   styleUrl: './form-field-base.component.scss',
+  imports: [FormsModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -14,10 +15,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export abstract class FormFieldBaseComponent implements ControlValueAccessor {
+export class FormFieldBaseComponent<T> implements ControlValueAccessor {
   @Input() label!: string;
 
-  abstract viewValue: any;
+  public viewValue!: T;
 
   onChange = () => {};
   onTouched = () => {};
@@ -30,7 +31,7 @@ export abstract class FormFieldBaseComponent implements ControlValueAccessor {
     this.viewValue = val;
   }
   
-  writeValue(obj: any): void {
+  writeValue(obj: T): void {
     this.value = obj;
   }
 
