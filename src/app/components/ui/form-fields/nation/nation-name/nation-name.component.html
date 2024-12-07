@@ -1,1 +1,1 @@
-<input [(ngModel)]="viewValue" type="text" minlength="2" maxlength="30">
+<input [(ngModel)]="viewValue" (ngModelChange)="changed()" type="text" minlength="2" maxlength="30">

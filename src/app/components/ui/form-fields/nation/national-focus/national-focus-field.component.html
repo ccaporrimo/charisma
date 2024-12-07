@@ -1,3 +1,3 @@
-<select [(ngModel)]="viewValue">
-    <option *ngFor="let option of focusOptions" [value]="option">{{ option.displayName }}</option>
+<select [(ngModel)]="viewValue" (ngModelChange)="changed()">
+    <option *ngFor="let option of focusOptions" [ngValue]="option">{{ option.displayName }}</option>
 </select>

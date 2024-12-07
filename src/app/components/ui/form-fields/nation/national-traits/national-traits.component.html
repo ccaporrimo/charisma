@@ -1,0 +1,3 @@
+<div *ngFor="let trait of traits; let idx = index">
+    <app-national-trait [isEditing]="true" [(ngModel)]="traits[idx]"></app-national-trait>
+</div>

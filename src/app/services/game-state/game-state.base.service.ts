@@ -8,14 +8,18 @@ import { BaseState } from "../base.state";
   export abstract class GameStateBaseService<T> extends BaseState {
     private _gameState!: T;
 
-    public get state(): T { return this._gameState; }
+    protected get state(): T { return this._gameState; }
     private set state(val: T) { this._gameState = { ...this._gameState, ...val } }
 
-    public state$: Observable<T> = new BehaviorSubject(this._gameState);
+    private stateSubject: BehaviorSubject<T> = new BehaviorSubject<T>({} as T);
+    protected state$: Observable<T> = this.stateSubject.asObservable();
 
     protected readonly updateState = (updatedVal: T) => {
         this.state = updatedVal;
+        this.stateSubject.next(this.state);
     }
+
+    public abstract update(updatedVal: T): void;
 
     constructor(private initialVal: T) {
       super();
