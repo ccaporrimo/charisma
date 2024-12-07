@@ -1,0 +1,6 @@
+svg path:hover {
+    fill: green;
+    cursor: pointer;
+
+    transition: fill 0.4s ease-out;
+}

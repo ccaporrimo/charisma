@@ -1,0 +1,13 @@
+<ng-container *ngIf="!!value">
+    <div>{{ value.displayName }}</div>
+    <div *ngIf="!!value.icon">
+        <img [src]="value.icon">
+    </div>
+    <div>{{ value.description }}</div>
+    <div>
+        Weight
+        <mat-slider min="1" max="10" [disabled]="!isEditing" [discrete]="true">
+            <input matSliderThumb [(ngModel)]="value.weight" (ngModelChange)="changed()" [disabled]="!isEditing">
+        </mat-slider>
+    </div>
+</ng-container>

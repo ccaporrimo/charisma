@@ -1,0 +1,12 @@
+<app-customizer-container [imageUrl]="nationImageUrl" pageTitle="Nation" subtitle="Statistics" (submitEvent)="submit()">
+    <form [formGroup]="form">
+        <div>Nation</div>
+        <app-nation-name #formComponent [formControlName]="nationName"></app-nation-name>
+        <div>National Traits</div>
+        <app-national-traits #formComponent [formControlName]="nationalTraits"></app-national-traits>
+        <div>Primary National Focus</div>
+        <app-national-focus #formComponent [formControlName]="focusTrait1"></app-national-focus>
+        <div>Secondary National Focus</div>
+        <app-national-focus #formComponent [formControlName]="focusTrait2"></app-national-focus>
+    </form>
+</app-customizer-container>

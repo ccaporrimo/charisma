@@ -1,0 +1,17 @@
+<div class="flex flex-row h-full w-full page-container">
+    <div class="image-container">
+        <img [src]="imageUrl">
+    </div>
+    <div class="flex flex-col grow items-center h-full max-w-[50%]">
+        <div class="w-full flex flex-row">
+            <div class="page-title">{{pageTitle}}</div>
+            <div class="grow h-full">{{subtitle}}</div>
+        </div>        
+        <div class="grow flex flex-col w-full items-center max-h-[calc(100%-25rem)] overflow-y-hidden">            
+            <div class="properties-container bg-white max-h-full overflow-y-auto">
+                <ng-content></ng-content>
+            </div>
+        </div>
+        <div class="mt-4"><button class="brown" (click)="submitEvent.emit()">Submit</button></div>        
+    </div>    
+</div>

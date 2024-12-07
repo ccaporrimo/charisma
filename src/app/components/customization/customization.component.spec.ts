@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomizeLeaderComponent } from './customize-leader.component';
+import { CustomizationComponent } from './customization.component';
 
-describe('CustomizeLeaderComponent', () => {
-  let component: CustomizeLeaderComponent;
-  let fixture: ComponentFixture<CustomizeLeaderComponent>;
+describe('CustomizationComponent', () => {
+  let component: CustomizationComponent;
+  let fixture: ComponentFixture<CustomizationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CustomizeLeaderComponent]
+      imports: [CustomizationComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CustomizeLeaderComponent);
+    fixture = TestBed.createComponent(CustomizationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,24 @@
+.page-container {
+    background-color: #16243b;
+}
+
+.image-container {
+    max-height: 100%;
+}
+
+.page-title {
+    font-family: 'Mea Culpa', cursive;
+    font-size: 160px;
+    color: #e2c9aa;
+    text-align: center;
+
+    text-shadow: 5px 5px 15px black;
+}
+
+.properties-container {
+    border: 4px solid #e2c9aa;
+    border-radius: 12px;
+    width: 75%;
+
+    box-shadow: 10px 10px 15px -5px black;
+}

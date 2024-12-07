@@ -1,11 +1,15 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, Inject, InjectionToken, Input, OnInit, ViewChild } from '@angular/core';
+import { ControlValueAccessor, FormControlName, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { IFormFieldBase } from '../../interfaces/form-field-base.interface';
+
+export const CONTROL_NAME = new InjectionToken<string>('app.control.name');
 
 @Component({
   selector: 'app-form-field-base',
   standalone: true,
   templateUrl: './form-field-base.component.html',
   styleUrl: './form-field-base.component.scss',
+  imports: [FormsModule, ReactiveFormsModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -14,13 +18,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export abstract class FormFieldBaseComponent implements ControlValueAccessor {
-  @Input() label!: string;
+export abstract class FormFieldBaseComponent<T> implements ControlValueAccessor, IFormFieldBase {
+  @Input() name!: string;
+  @ViewChild(FormControlName) public formControlNameDirective!: FormControlName;
 
-  abstract viewValue: any;
+  static label: string;
+  public viewValue!: T;  
 
-  onChange = () => {};
-  onTouched = () => {};
+  onChange: any = () => {};
+  onTouched: any = () => {};
   
   get value() {
     return this.viewValue;
@@ -30,7 +36,7 @@ export abstract class FormFieldBaseComponent implements ControlValueAccessor {
     this.viewValue = val;
   }
   
-  writeValue(obj: any): void {
+  writeValue(obj: T): void {
     this.value = obj;
   }
 
@@ -40,6 +46,10 @@ export abstract class FormFieldBaseComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  changed(): void {
+    this.onChange(this.value);
   }
   
   setDisabledState?(isDisabled: boolean): void {

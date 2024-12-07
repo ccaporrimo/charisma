@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CustomizeNationComponent } from './components/customize-nation/customize-nation.component';
+import { CustomizeNationComponent } from './components/customization/customize-nation/customize-nation.component';
 
 @Component({
   selector: 'app-root',
